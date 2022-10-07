@@ -1,0 +1,27 @@
+from turtle import title
+from unittest.util import _MAX_LENGTH
+from django.db import models
+from django.contrib.auth.models import User
+# Create your models here.
+class Vendor(models.Model):
+    user =models.ForeignKey(User,on_delete = models.CASCADE)
+    address = models.TextField(null= True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class ProductCategory(models.Model):
+    title = models.CharField(max_length=200)
+    details = models.TextField(null=True)
+
+    def __str__(self):
+        return self.title
+
+class Product(models.Model):
+    title = models.CharField(max_length=200)
+    details = models.TextField(null=True)
+    price = models.FloatField()
+
+    def __str__(self):
+        return self.title
